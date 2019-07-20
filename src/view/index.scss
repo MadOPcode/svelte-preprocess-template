@@ -1,0 +1,15 @@
+@import 'variables';
+
+html,
+body {
+  height: 100%;
+  font-family: Tahoma, Helvetica, sans-serif;
+  font-size: $font-size;
+  line-height: $line-height;
+  color: $text-color;
+  background: #fff;
+}
+
+body {
+  margin: 0;
+}

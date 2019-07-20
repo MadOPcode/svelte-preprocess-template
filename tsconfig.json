@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": false,
+    "downlevelIteration": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["components/*"]
+    }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
