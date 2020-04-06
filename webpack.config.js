@@ -19,8 +19,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].[id].js',
-    sourceMapFilename: '[name].js.map',
+    chunkFilename: '[id].js',
     path: distDir
   },
   module: {
@@ -50,6 +49,14 @@ module.exports = {
         use: 'ts-loader'
       },
       {
+        test: /\.css$/,
+        use: [
+          { loader: IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' }
+        ]
+      },
+      {
         test: /\.s[ac]ss$/,
         use: [
           { loader: IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader },
@@ -58,9 +65,11 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              outputStyle: IS_DEV ? 'expanded' : 'compressed',
-              precision: 8,
-              includePaths: [path.resolve(srcDir, 'styles')]
+              sassOptions: {
+                outputStyle: IS_DEV ? 'expanded' : 'compressed',
+                precision: 8,
+                includePaths: [path.resolve(srcDir, 'styles')]
+              }
             }
           }
         ]
@@ -81,10 +90,10 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[name].[id].css'
+      chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Svelte app',
+      title: 'Svelte App',
       chunks: ['index'],
       filename: 'index.html',
       template: path.resolve(viewDir, 'index.html')

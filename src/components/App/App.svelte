@@ -13,6 +13,10 @@
 <style lang="scss">
   $name-text-color: #dd2911;
 
+  h1 {
+    text-align: center;
+  }
+
   .name {
     color: $name-text-color;
   }
